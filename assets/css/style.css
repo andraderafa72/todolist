@@ -2,7 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 'Ubuntu', sans-serif;
+  font-family: 'Montserrat', sans-serif;
 }
 
 body{
@@ -14,6 +14,7 @@ h1, p{
 
 h1{
   font-size: 2.4rem;
+  font-weight: 400;
 }
 p{
   color: #8a8a8a;
@@ -70,11 +71,17 @@ input{
 input:focus, .delete:focus{
   outline: none;
 }
-/* rgb(133, 172, 218) */
+
 .done{
   background-color: #A1DF7D;
   text-decoration: line-through;
   opacity: 0.8;
+}
+
+@media(max-width:992px){
+  .container{
+    width:95%!important;
+  }
 }
 
 .container{

@@ -14,6 +14,7 @@ document.addEventListener('click', e =>{
 
   if(el.classList.contains('delete')){
     el.parentElement.remove()
+    saveOnLocalStorage()
   }
 })
 
@@ -21,16 +22,30 @@ addTask.addEventListener('click', e => {
   e.preventDefault()
 
   if(task.value === '' || task.value.lenght > 100) return
-  createTask()
+  createTask(task.value)
 })
 
-function createTask(){
+function saveOnLocalStorage(){
+  const liTarefas = document.querySelectorAll('li')
+  const listaDeTarefas = []
+
+  for(let tarefa of liTarefas){
+    const text = tarefa.innerText
+    listaDeTarefas.push(text)
+  }
+
+  const tarefasJSON = JSON.stringify(listaDeTarefas)
+  localStorage.setItem('tarefas', tarefasJSON)
+}
+
+function createTask(texto){
   const li = createLiElement();
   const button = createDeleteButton();
   li.setAttribute('class', 'liTask')
-  li.innerText = task.value;
+  li.innerText = texto;
   li.appendChild(button)
   taskList.appendChild(li)
+  saveOnLocalStorage()
 }
 
 function createDeleteButton(){
@@ -42,3 +57,14 @@ function createDeleteButton(){
 function createLiElement(){
   return document.createElement('li');
 }
+
+function getFromLocalStorage(){
+  const tasksJSON = localStorage.getItem('tarefas')
+  const tasks = JSON.parse(tasksJSON);
+
+  for(let tarefa of tasks){
+    createTask(tarefa)
+  }
+}
+
+getFromLocalStorage()

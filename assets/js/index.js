@@ -23,6 +23,7 @@ addTask.addEventListener('click', e => {
 
   if(task.value === '' || task.value.lenght > 100) return
   createTask(task.value)
+  task.value = ''
 })
 
 function saveOnLocalStorage(){

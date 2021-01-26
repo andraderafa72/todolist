@@ -1,0 +1,31 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul{
+  list-style: none;
+}
+
+li{
+  padding: 10px 16px;
+  cursor: pointer!important;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.done{
+  background-color: red;
+}
+
+.container{
+  width: 75%;
+  margin: 0 auto;
+  border: 1px solid black
+}
+
+.delete{
+  padding: 10px 16px;
+}
